@@ -1,8 +1,9 @@
-import cart from './cart';
+import armySelection from './armySelection';
 import { combineReducers } from 'redux';
 
+// root reducer
 const rootReducer = combineReducers({
-    cart
+    armySelection
 });
 
 export default rootReducer;
