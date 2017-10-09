@@ -8,19 +8,6 @@ class ArmySelection extends Component {
 
         this.handleOnClick = this.handleOnClick.bind(this);
 
-        this.state = {
-            armyListOptions: [
-                'PanOceania',
-                'Yu Jing',
-                'Ariadna',
-                'Haqqislam',
-                'Nomadas',
-                'Combined Army',
-                'Aleph',
-                'tohaa'
-            ]
-        }
-        //console.log(this.props.state)
     }
 
     handleOnClick(army) {
@@ -34,7 +21,7 @@ class ArmySelection extends Component {
                     Selected Army: { this.props.getArmy }
                 </h2>
                 <div className="army-selection">
-                    { map(this.state.armyListOptions, (item, id) => <li onClick={() => this.handleOnClick(item)} key={ id } >{ item }</li>) }
+                    { map(this.props.getArmyListOptions, (item, id) => <li onClick={() => this.handleOnClick(item)} key={ id } >{ item }</li>) }
                 </div>
             </div>
         );

@@ -5,6 +5,16 @@ export const SELECT_ARMY = 'SELECT_ARMY';
 
 // initial state
 const INITIAL_STATE = {
+    armyListOptions: [
+        'Pan Oceania',
+        'Yu Jing',
+        'Ariadna',
+        'Haqqislam',
+        'Nomads',
+        'Combined Army',
+        'Aleph',
+        'tohaa'
+    ],
     selectedArmy: undefined
 };
 
@@ -33,3 +43,7 @@ export const getArmy = (state) => {
 export const getState = (state) => {
     return state;
 };
+
+export const getArmyListOptions = (state) => {
+    return state.armySelection.armyListOptions;
+}
