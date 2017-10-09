@@ -6,8 +6,8 @@ export const SELECT_ARMY = 'SELECT_ARMY';
 // initial state
 const INITIAL_STATE = {
     armyListOptions: [
-        'Pan Oceania',
-        'Yu Jing',
+        'PanOceania',
+        'YuJing',
         'Ariadna',
         'Haqqislam',
         'Nomads',
@@ -15,14 +15,30 @@ const INITIAL_STATE = {
         'Aleph',
         'Tohaa'
     ],
-    selectedArmy: undefined
+    selectedArmy: undefined,
+    units: {
+        PanOceania: {
+            li: ['Auxillia', 'Fusliers', 'Hexas'],
+            md: [],
+            hi: [],
+            tag: [],
+            rem: [],
+            sk: []
+        },
+        YuJing: [],
+        Ariadna: [],
+        Haqqislam: [],
+        Nomads: [],
+        CombinedArmy: [],
+        Aleph: [],
+        Tohaa: []
+    }
 };
 
 export default(state = INITIAL_STATE, action) => {
 
     switch (action.type) {
         case SELECT_ARMY:
-            console.log(action.payload)
             return {
                 ...state,
                 selectedArmy: action.payload
@@ -40,10 +56,10 @@ export const getArmy = (state) => {
     return state.armySelection.selectedArmy;
 };
 
-export const getState = (state) => {
-    return state;
-};
-
 export const getArmyListOptions = (state) => {
     return state.armySelection.armyListOptions;
-}
+};
+
+export const getUnits = (state) => {
+    return state.armySelection.units;
+};

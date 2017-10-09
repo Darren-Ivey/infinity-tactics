@@ -12,6 +12,7 @@ class ArmySelection extends Component {
 
     handleOnClick(army) {
         this.props.selectArmy(army);
+        console.log(this.props.getUnits[this.props.getArmy])
     }
 
     render() {
@@ -22,6 +23,9 @@ class ArmySelection extends Component {
                 </h2>
                 <div className="army-selection">
                     { map(this.props.getArmyListOptions, (item, id) => <li onClick={() => this.handleOnClick(item)} key={ id } >{ item }</li>) }
+                </div>
+                <div>
+                    { map(this.props.getUnits[this.props.getArmy], (item, id) => <li key={ id } >{ item }</li>) }
                 </div>
             </div>
         );
