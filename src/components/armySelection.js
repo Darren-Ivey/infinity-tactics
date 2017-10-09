@@ -10,7 +10,6 @@ class ArmySelection extends Component {
 
     handleOnClick(army) {
         this.props.selectArmy(army);
-        console.log(this.props.getUnits[this.props.getArmy])
     }
 
     render() {
@@ -22,9 +21,18 @@ class ArmySelection extends Component {
                 <div className="army-selection">
                     { map(this.props.getArmyListOptions, (item, id) => <li onClick={() => this.handleOnClick(item)} key={ id } >{ item }</li>) }
                 </div>
-                <div>
-                    { map(this.props.getUnits[this.props.getArmy], (item, id) => <li key={ id } >{ item }</li>) }
-                </div>
+                <article>
+                    <h3>Light Infantry</h3>
+                    { map(this.props.getUnits[this.props.getArmy].li, (item, id) => <li key={ id } >{ item }</li>) }
+                </article>
+                <article>
+                    <h4>Medium Infantry</h4>
+                    { map(this.props.getUnits[this.props.getArmy].md, (item, id) => <li key={ id } >{ item }</li>) }
+                </article>
+                <article>
+                    <h4>Heavy Infantry</h4>
+                    { map(this.props.getUnits[this.props.getArmy].hi, (item, id) => <li key={ id } >{ item }</li>) }
+                </article>
             </div>
         );
     }

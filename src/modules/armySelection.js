@@ -11,27 +11,76 @@ const INITIAL_STATE = {
         'Ariadna',
         'Haqqislam',
         'Nomads',
-        'Combined Army',
+        'CombinedArmy',
         'Aleph',
         'Tohaa'
     ],
-    selectedArmy: undefined,
+    selectedArmy: 'PanOceania',
     units: {
         PanOceania: {
             li: ['Auxillia', 'Fusliers', 'Hexas'],
+            md: ['Bolts', 'Nisse'],
+            hi: ['Orc', 'Aquilla Guard'],
+            tag: [],
+            rem: [],
+            sk: []
+        },
+        YuJing: {
+            li: [],
             md: [],
             hi: [],
             tag: [],
             rem: [],
             sk: []
         },
-        YuJing: [],
-        Ariadna: [],
-        Haqqislam: [],
-        Nomads: [],
-        CombinedArmy: [],
-        Aleph: [],
-        Tohaa: []
+        Ariadna: {
+            li: [],
+            md: [],
+            hi: [],
+            tag: [],
+            rem: [],
+            sk: []
+        },
+        Haqqislam: {
+            li: [],
+            md: [],
+            hi: [],
+            tag: [],
+            rem: [],
+            sk: []
+        },
+        Nomads: {
+            li: [],
+            md: [],
+            hi: [],
+            tag: [],
+            rem: [],
+            sk: []
+        },
+        CombinedArmy: {
+            li: [],
+            md: [],
+            hi: [],
+            tag: [],
+            rem: [],
+            sk: []
+        },
+        Aleph: {
+            li: [],
+            md: [],
+            hi: [],
+            tag: [],
+            rem: [],
+            sk: []
+        },
+        Tohaa: {
+            li: [],
+            md: [],
+            hi: [],
+            tag: [],
+            rem: [],
+            sk: []
+        }
     }
 };
 
