@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import ArmySelection from './armySelection';
+import ArmySelection from '../components/armySelection';
 import { selectArmy, getArmy, getState, getArmyListOptions } from '../modules/armySelection';
 
 const Army = ({ selectArmy, getArmy, getState, getArmyListOptions }) => {

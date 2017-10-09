@@ -13,7 +13,7 @@ const INITIAL_STATE = {
         'Nomads',
         'Combined Army',
         'Aleph',
-        'tohaa'
+        'Tohaa'
     ],
     selectedArmy: undefined
 };
