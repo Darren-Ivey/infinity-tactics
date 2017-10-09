@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
 import { map } from 'lodash/collection';
-import { selectArmy } from '../actions/armySelection';
 
 class ArmySelection extends Component {
+
     constructor(props) {
         super(props);
 
@@ -22,31 +20,25 @@ class ArmySelection extends Component {
                 'tohaa'
             ]
         }
+        //console.log(this.props.state)
     }
 
-    handleOnClick(item) {
-        selectArmy(item);
+    handleOnClick(army) {
+        this.props.selectArmy(army);
     }
 
     render() {
         return (
-            <div className="army-selection">
-                { map(this.state.armyListOptions, (item, id) => <li onClick={() => this.handleOnClick(item)} key={ id } >{ item }</li>) }
+            <div>
+                <h2>
+                    Selected Army: { this.props.getArmy }
+                </h2>
+                <div className="army-selection">
+                    { map(this.state.armyListOptions, (item, id) => <li onClick={() => this.handleOnClick(item)} key={ id } >{ item }</li>) }
+                </div>
             </div>
         );
     }
 }
 
-function mapStateToProps(state, props) {
-    return {
-        armySelection: state.armySelection
-    };
-}
-
-function mapDispatchToProps(dispatch) {
-    return {
-        actions: bindActionCreators(selectArmy, dispatch)
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ArmySelection);
+export default ArmySelection;
