@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { render } from 'react-dom';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
@@ -8,7 +8,7 @@ import Store from './store';
 
 const storeInstance = Store();
 
-ReactDOM.render(
+render(
     <Provider store={storeInstance}>
         <App />
     </Provider>,
