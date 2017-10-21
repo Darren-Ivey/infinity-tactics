@@ -1,8 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import './App.css';
 import Army from './pages/army';
+import { appUnloaded } from './modules/appStatus';
 
 class App extends Component {
+
+    constructor(props) {
+        super(props);
+        this.props.appUnloaded();
+    }
 
     render() {
     return (
@@ -16,4 +23,10 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        appUnloaded: () => dispatch(appUnloaded())
+    }
+};
+
+export default connect(null, mapDispatchToProps)(App);
