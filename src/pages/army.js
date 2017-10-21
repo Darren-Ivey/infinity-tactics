@@ -3,14 +3,13 @@ import { connect } from 'react-redux';
 import ArmySelection from '../components/armySelection';
 import { selectArmy, getArmy, getUnits, getArmyListOptions } from '../modules/armySelection';
 
-const Army = ({ selectArmy, getArmy, getUnits, getArmyListOptions, route }) => {
+const Army = ({ selectArmy, getArmy, getUnits, getArmyListOptions }) => {
         return (
             <ArmySelection
                 selectArmy={ selectArmy }
                 getArmy={ getArmy }
                 getUnits={ getUnits }
-                getArmyListOptions={ getArmyListOptions }
-                route={ route } />
+                getArmyListOptions={ getArmyListOptions } />
         );
     }
 

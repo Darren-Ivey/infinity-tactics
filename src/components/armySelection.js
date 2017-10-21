@@ -8,8 +8,6 @@ class ArmySelection extends Component {
     constructor(props) {
         super(props);
         this.handleOnClick = this.handleOnClick.bind(this);
-        const { route } = this.props;
-        console.log(route);
     }
 
     handleOnClick(army) {
