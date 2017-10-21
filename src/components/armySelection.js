@@ -23,9 +23,7 @@ class ArmySelection extends Component {
 
         return (
             <div>
-                <h2>
-                    Selected Army: { this.props.getArmy }
-                </h2>
+                <h2>{ this.props.getArmy }</h2>
                 <div className="navigation">
                     { map(this.props.getArmyListOptions, (item, id) => <Link to={ item } className="navigation__item" key={ id } >{ item }</Link>) }
                 </div>

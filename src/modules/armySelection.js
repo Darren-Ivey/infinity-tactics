@@ -6,12 +6,12 @@ export const SELECT_ARMY = 'SELECT_ARMY';
 // initial state
 const INITIAL_STATE = {
     armyListOptions: [
-        'PanOceania',
+        'Pan Oceania',
         'YuJing',
         'Ariadna',
         'Haqqislam',
         'Nomads',
-        'CombinedArmy',
+        'Combined Army',
         'Aleph',
         'Tohaa'
     ],
