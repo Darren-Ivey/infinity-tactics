@@ -13,6 +13,9 @@ class ArmySelection extends Component {
     }
 
     render() {
+
+        const selection = this.props.getUnits[this.props.getArmy];
+
         return (
             <div>
                 <h2>
@@ -23,15 +26,15 @@ class ArmySelection extends Component {
                 </div>
                 <article>
                     <h3>Light Infantry</h3>
-                    { map(this.props.getUnits[this.props.getArmy].li, (item, id) => <li key={ id } >{ item }</li>) }
+                    { map(selection.li, (item, id) => <li key={ id } >{ item }</li>) }
                 </article>
                 <article>
                     <h4>Medium Infantry</h4>
-                    { map(this.props.getUnits[this.props.getArmy].md, (item, id) => <li key={ id } >{ item }</li>) }
+                    { map(selection.md, (item, id) => <li key={ id } >{ item }</li>) }
                 </article>
                 <article>
                     <h4>Heavy Infantry</h4>
-                    { map(this.props.getUnits[this.props.getArmy].hi, (item, id) => <li key={ id } >{ item }</li>) }
+                    { map(selection.hi, (item, id) => <li key={ id } >{ item }</li>) }
                 </article>
             </div>
         );

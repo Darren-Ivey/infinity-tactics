@@ -26,8 +26,14 @@ render(
         <ConnectedRouter history={history}>
             <div>
                 <Route exact path="/" component={ App } />
-                <Route path="/1" component={ App } />
-                <Route path="/2" component={ App } />
+                <Route path="/PanOceania" component={ App } />
+                <Route path="/YuJing" component={ App } />
+                <Route path="/Ariadna" component={ App } />
+                <Route path="/Haqqislam" component={ App } />
+                <Route path="/Nomads" component={ App } />
+                <Route path="/CombinedArmy" component={ App } />
+                <Route path="/Aleph" component={ App } />
+                <Route path="/Tohaa" component={ App } />
             </div>
         </ConnectedRouter>
     </Provider>,
