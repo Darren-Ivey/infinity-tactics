@@ -5,14 +5,11 @@ import { selectArmy, getArmy, getUnits, getArmyListOptions } from '../modules/ar
 
 const Army = ({ selectArmy, getArmy, getUnits, getArmyListOptions }) => {
         return (
-            <div>
-                <h2>Infinity Tactics</h2>
             <ArmySelection
                 selectArmy={ selectArmy }
                 getArmy={ getArmy }
                 getUnits={ getUnits }
                 getArmyListOptions={ getArmyListOptions }/>
-            </div>
         );
     }
 
