@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import { map } from 'lodash/collection';
+import { Link } from 'react-router-dom';
+import './armySelection.css';
 
 class ArmySelection extends Component {
 
     constructor(props) {
         super(props);
         this.handleOnClick = this.handleOnClick.bind(this);
+        const { route } = this.props;
+        console.log(route);
     }
 
     handleOnClick(army) {
@@ -14,15 +18,16 @@ class ArmySelection extends Component {
 
     render() {
 
-        const selection = this.props.getUnits[this.props.getArmy];
+        const { getUnits, getArmy} = this.props;
+        const selection = getUnits[getArmy];
 
         return (
             <div>
                 <h2>
                     Selected Army: { this.props.getArmy }
                 </h2>
-                <div className="army-selection">
-                    { map(this.props.getArmyListOptions, (item, id) => <li onClick={() => this.handleOnClick(item)} key={ id } >{ item }</li>) }
+                <div className="navigation">
+                    { map(this.props.getArmyListOptions, (item, id) => <Link to={ item } className="navigation__item" key={ id } >{ item }</Link>) }
                 </div>
                 <article>
                     <h3>Light Infantry</h3>
