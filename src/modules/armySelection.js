@@ -10,16 +10,18 @@ export const FETCH_ARMY_DATA_FAILED = 'FETCH_ARMY_DATA_FAILED';
 
 // initial state
 const INITIAL_STATE = {
-    armyListOptions: [
-        'panoceania',
-        'yujing',
-        'ariadna',
-        'haqqislam',
-        'nomads',
-        'combinedarmy',
-        'aleph',
-        'tohaa'
-    ],
+    armyListOptions:
+        [
+            { 'panoceania' : 'Pan Oceania' },
+            { 'yujing' : 'Yujing'},
+            { 'ariadna' :'Ariadna'},
+            { 'haqqislam' :'Haqqislam'},
+            { 'nomads' : 'Nomads'},
+            { 'combinedarmy' : 'Combined Army'},
+            { 'aleph' : 'Aleph'},
+            { 'tohaa' : 'Tohaa'}
+        ]
+    ,
     selectedArmy: 'panoceania',
     units: {
         panoceania: {
