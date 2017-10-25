@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './App.css';
 import Army from './pages/army';
-import { appUnloaded } from './modules/appStatus';
+import { getAppStatus, appUnloaded } from './modules/appStatus';
 
 class App extends Component {
 
@@ -13,15 +13,23 @@ class App extends Component {
 
     render() {
     return (
-      <div className="App">
-          <h1>Infinity Tactics</h1>
-        <div className="App-intro">
-          <Army />
+        <div className="App">
+            <div className="App">
+                <h1>Infinity Tactics</h1>
+                <div className="App-intro">
+                    <Army />
+                </div>
+            </div>
         </div>
-      </div>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        status: getAppStatus(state)
+    };
+};
 
 const mapDispatchToProps = (dispatch) => {
     return {
@@ -29,4 +37,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

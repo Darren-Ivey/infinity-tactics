@@ -16,7 +16,8 @@ export default (state = INITIAL_STATE, action) => {
         case APP_LOADED:
             return {
                 ...state,
-                status: APP_LOADED };
+                status: APP_LOADED
+            };
 
         default:
             return state;

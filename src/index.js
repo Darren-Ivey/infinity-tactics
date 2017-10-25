@@ -29,7 +29,7 @@ render(
     <Provider store={store}>
         <ConnectedRouter history={history}>
             <div>
-                <Route path="/" component={App} />
+                <Route path="/:id" component={App} />
             </div>
         </ConnectedRouter>
     </Provider>,

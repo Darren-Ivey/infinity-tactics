@@ -1,23 +1,28 @@
 import { createAction } from 'redux-actions';
+import { call, put } from 'redux-saga/effects';
+import { getArmyData } from '../services/infinity-services';
 
 // actions
 export const SELECT_ARMY = 'SELECT_ARMY';
+export const FETCH_ARMY_DATA = 'FETCH_ARMY_DATA';
+export const FETCH_ARMY_DATA_SUCCESS = 'FETCH_ARMY_DATA_SUCCESS';
+export const FETCH_ARMY_DATA_FAILED = 'FETCH_ARMY_DATA_FAILED';
 
 // initial state
 const INITIAL_STATE = {
     armyListOptions: [
-        'Pan Oceania',
-        'YuJing',
-        'Ariadna',
-        'Haqqislam',
-        'Nomads',
-        'Combined Army',
-        'Aleph',
-        'Tohaa'
+        'panoceania',
+        'yujing',
+        'ariadna',
+        'haqqislam',
+        'nomads',
+        'combinedarmy',
+        'aleph',
+        'tohaa'
     ],
-    selectedArmy: 'PanOceania',
+    selectedArmy: 'panoceania',
     units: {
-        PanOceania: {
+        panoceania: {
             li: ['Auxillia', 'Fusliers', 'Hexas'],
             md: ['Bolts', 'Nisse'],
             hi: ['Orc', 'Aquilla Guard'],
@@ -25,7 +30,7 @@ const INITIAL_STATE = {
             rem: [],
             sk: []
         },
-        YuJing: {
+        yujing: {
             li: [],
             md: [],
             hi: [],
@@ -33,7 +38,7 @@ const INITIAL_STATE = {
             rem: [],
             sk: []
         },
-        Ariadna: {
+        ariadna: {
             li: [],
             md: [],
             hi: [],
@@ -41,7 +46,7 @@ const INITIAL_STATE = {
             rem: [],
             sk: []
         },
-        Haqqislam: {
+        haqqislam: {
             li: [],
             md: [],
             hi: [],
@@ -49,7 +54,7 @@ const INITIAL_STATE = {
             rem: [],
             sk: []
         },
-        Nomads: {
+        nomads: {
             li: [],
             md: [],
             hi: [],
@@ -57,7 +62,7 @@ const INITIAL_STATE = {
             rem: [],
             sk: []
         },
-        CombinedArmy: {
+        combinedarmy: {
             li: [],
             md: [],
             hi: [],
@@ -65,7 +70,7 @@ const INITIAL_STATE = {
             rem: [],
             sk: []
         },
-        Aleph: {
+        aleph: {
             li: [],
             md: [],
             hi: [],
@@ -73,7 +78,7 @@ const INITIAL_STATE = {
             rem: [],
             sk: []
         },
-        Tohaa: {
+        tohaa: {
             li: [],
             md: [],
             hi: [],
@@ -81,12 +86,38 @@ const INITIAL_STATE = {
             rem: [],
             sk: []
         }
-    }
+    },
+    fetching: false,
+    error: undefined
+
 };
 
 export default(state = INITIAL_STATE, action) => {
 
     switch (action.type) {
+
+        case FETCH_ARMY_DATA:
+            return {
+                ...state,
+                fetching: true,
+                error: undefined
+            };
+
+        case FETCH_ARMY_DATA_SUCCESS:
+            return {
+                ...state,
+                fetching: false,
+                error: undefined,
+                //armyListOptions: action.payload
+            };
+
+        case FETCH_ARMY_DATA_FAILED:
+            return {
+                ...state,
+                fetching: false,
+                error: action.payload
+            };
+
         case SELECT_ARMY:
             return {
                 ...state,
@@ -99,16 +130,34 @@ export default(state = INITIAL_STATE, action) => {
 
 // action creators
 export const selectArmy = createAction(SELECT_ARMY);
+export const fetchArmyData = createAction(FETCH_ARMY_DATA);
+export const fetchArmyDataSuccess = createAction(FETCH_ARMY_DATA_SUCCESS);
+export const fetchArmyDataFailed = createAction(FETCH_ARMY_DATA_FAILED);
+
+
+// const formatArmySelection = (armyName) => {
+//     return (armyName).replace(/[^0-9a-z]/gi, '');
+// }
 
 // selectors
 export const getArmy = (state) => {
     return state.armySelection.selectedArmy;
 };
-
 export const getArmyListOptions = (state) => {
     return state.armySelection.armyListOptions;
 };
-
 export const getUnits = (state) => {
     return state.armySelection.units;
 };
+
+// sagas
+export function* fetchArmyDataSaga () {
+    yield put(fetchArmyData());
+    try {
+        const response = yield call(getArmyData);
+        yield put(fetchArmyDataSuccess(response));
+    } catch (error) {
+        yield put(fetchArmyDataFailed(error));
+    }
+}
+
