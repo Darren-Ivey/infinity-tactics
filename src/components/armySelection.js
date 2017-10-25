@@ -11,7 +11,6 @@ class ArmySelection extends Component {
     }
 
     handleOnClick(key) {
-        console.log(key)
         this.props.selectArmy(key)
     }
 
@@ -23,7 +22,7 @@ class ArmySelection extends Component {
         const renderListItem = (item) => {
             const value = Object.values(item)[0];
             const key = Object.keys(item)[0];
-            return <Link onClick={ (e) => { this.handleOnClick(key)}} to={ key } className="navigation__item" key={ key } >{ value }</Link>
+            return <Link onClick={ () => { this.handleOnClick(key)}} to={ key } className="navigation__item" key={ key } >{ value }</Link>
         }
 
         return (
