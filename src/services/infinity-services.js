@@ -1,29 +1,15 @@
 
-const handleErrors = (response) => {
-    if (!response.ok) {
-        throw Error(response.statusText);
-    }
-    return response;
-};
 
-const getInit = {
+const getOptions = {
     method: 'GET',
-    mode: 'cors'
+    headers: {
+        "Content-Type": "application/json"
+    },
 };
 
 export const getArmyData = () => {
-    fetch("http://localhost:3003/armyListOptions", getInit)
-        .then(handleErrors)
-        .then(response => {
-            response.json()
-                .then( data => {
-                    return {
-                        data: data['armyListOptions'],
-                        status: response.status
-                    };
-                })
-        })
-        .then(dataObj => { return dataObj })
+    return fetch("http://localhost:3003/armyType", getOptions)
+        .then(r => r.json())
         .catch(error => console.log({
             code: error
         }));

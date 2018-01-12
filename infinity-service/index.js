@@ -4,19 +4,19 @@ const app = experss();
 
 app.use(cors());
 
-app.get("/armyListOptions", (req, res) => {
-    res.send({
-        armyListOptions: [
-            'Pan Oceania',
-            'YuJing',
-            'Ariadna',
-            'Haqqislam',
-            'Nomads',
-            'Combined Army',
-            'Aleph',
-            'Tohaa'
-        ],
-    });
+app.get("/armyType", (req, res) => {
+    res.send(
+        [
+            { 'panoceania' : 'Pan Oceania' },
+            { 'yujing' : 'Yujing'},
+            { 'ariadna' :'Ariadna'},
+            { 'haqqislam' :'Haqqislam'},
+            { 'nomads' : 'Nomads'},
+            { 'combinedarmy' : 'Combined Army'},
+            { 'aleph' : 'Aleph'},
+            { 'tohaa' : 'Tohaa'}
+        ]
+    );
 });
 
 const PORT = process.env.PORT || 3003;
