@@ -10,83 +10,21 @@ export const FETCH_ARMY_DATA_FAILED = 'FETCH_ARMY_DATA_FAILED';
 
 // initial state
 const INITIAL_STATE = {
-    armyListOptions: {}
-    ,
+    armyListOptions: {},
     selectedArmy: 'panoceania',
-    units: {
-        panoceania: {
-            li: ['Auxillia', 'Fusliers', 'Hexas'],
-            md: ['Bolts', 'Nisse'],
-            hi: ['Orc', 'Aquilla Guard'],
-            tag: [],
-            rem: [],
-            sk: []
-        },
-        yujing: {
-            li: [],
-            md: [],
-            hi: [],
-            tag: [],
-            rem: [],
-            sk: []
-        },
-        ariadna: {
-            li: [],
-            md: [],
-            hi: [],
-            tag: [],
-            rem: [],
-            sk: []
-        },
-        haqqislam: {
-            li: [],
-            md: [],
-            hi: [],
-            tag: [],
-            rem: [],
-            sk: []
-        },
-        nomads: {
-            li: [],
-            md: [],
-            hi: [],
-            tag: [],
-            rem: [],
-            sk: []
-        },
-        combinedarmy: {
-            li: [],
-            md: [],
-            hi: [],
-            tag: [],
-            rem: [],
-            sk: []
-        },
-        aleph: {
-            li: [],
-            md: [],
-            hi: [],
-            tag: [],
-            rem: [],
-            sk: []
-        },
-        tohaa: {
-            li: [],
-            md: [],
-            hi: [],
-            tag: [],
-            rem: [],
-            sk: []
-        }
-    },
+    units: [{
+            panoceania: {},
+            combinedarmy: {},
+        }],
     fetching: false,
     error: undefined
-
 };
 
 export default(state = INITIAL_STATE, action) => {
 
-    switch (action.type) {
+    const { payload, type } = action;
+
+    switch (type) {
 
         case FETCH_ARMY_DATA:
             return {
@@ -95,14 +33,13 @@ export default(state = INITIAL_STATE, action) => {
                 error: undefined
             };
 
-
         case FETCH_ARMY_DATA_SUCCESS:
-            console.log("Payload: ",action.payload)
             return {
                 ...state,
                 fetching: false,
                 error: undefined,
-                armyListOptions: action.payload
+                armyListOptions: payload.arrmyType,
+                units: payload.armyProfiles
             };
 
         case FETCH_ARMY_DATA_FAILED:
@@ -128,11 +65,6 @@ export const fetchArmyData = createAction(FETCH_ARMY_DATA);
 export const fetchArmyDataSuccess = createAction(FETCH_ARMY_DATA_SUCCESS);
 export const fetchArmyDataFailed = createAction(FETCH_ARMY_DATA_FAILED);
 
-
-// const formatArmySelection = (armyName) => {
-//     return (armyName).replace(/[^0-9a-z]/gi, '');
-// }
-
 // selectors
 export const getArmy = (state) => {
     return state.armySelection.selectedArmy;
@@ -141,7 +73,7 @@ export const getArmyListOptions = (state) => {
     return state.armySelection.armyListOptions;
 };
 export const getUnits = (state) => {
-    return state.armySelection.units;
+    return state.armySelection.units[0];
 };
 
 // sagas

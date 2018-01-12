@@ -11,7 +11,7 @@ const Army = ({ selectArmy, getArmy, getUnits, getArmyListOptions }) => {
                 getUnits={ getUnits }
                 getArmyListOptions={ getArmyListOptions } />
         );
-    }
+    };
 
 const mapStateToProps = (state) => {
     return {

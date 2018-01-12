@@ -4,18 +4,32 @@ const app = experss();
 
 app.use(cors());
 
-app.get("/armyType", (req, res) => {
+app.get("/armyData", (req, res) => {
     res.send(
-        [
-            { 'panoceania' : 'Pan Oceania' },
-            { 'yujing' : 'Yujing'},
-            { 'ariadna' :'Ariadna'},
-            { 'haqqislam' :'Haqqislam'},
-            { 'nomads' : 'Nomads'},
-            { 'combinedarmy' : 'Combined Army'},
-            { 'aleph' : 'Aleph'},
-            { 'tohaa' : 'Tohaa'}
-        ]
+        {
+            arrmyType: [
+                {'panoceania': 'Pan Oceania'},
+                {'combinedarmy': 'Combined Army'}
+            ],
+            armyProfiles: [{
+                panoceania: {
+                    li: ['Auxillia', 'Fusliers', 'Hexas'],
+                    md: ['Bolts', 'Nisse'],
+                    hi: ['Orc', 'Aquilla Guard'],
+                    tag: ['Cutter'],
+                    rem: ['Clipper'],
+                    sk: ['Crocman']
+                },
+                combinedarmy: {
+                    li: ['Vanguard', 'Seed Solider'],
+                    md: ['Rodocks', 'Yoagat'],
+                    hi: ['Chrontid', 'Suryat'],
+                    tag: ['Avatar','Sphinx'],
+                    rem: ['Q Drone','Ikadrone'],
+                    sk: ['Shrouded','Malignos']
+                },
+            }]
+        }
     );
 });
 
