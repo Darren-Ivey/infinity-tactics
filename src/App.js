@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './App.css';
-import Army from './pages/army';
 import { getAppStatus, appUnloaded } from './modules/appStatus';
 
 class App extends Component {
@@ -17,7 +16,7 @@ class App extends Component {
             <div className="App">
                 <h1>Infinity Tactics</h1>
                 <div className="App-intro">
-                    <Army />
+                    { this.props.children }
                 </div>
             </div>
         </div>
