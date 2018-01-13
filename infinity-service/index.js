@@ -9,25 +9,34 @@ app.get("/armyData", (req, res) => {
         {
             arrmyType: [
                 {'panoceania': 'Pan Oceania'},
-                {'combinedarmy': 'Combined Army'}
+                {'combinedarmy': 'Combined Army'},
+                { 'nomads' : 'Nomads'}
             ],
             armyProfiles: [{
                 panoceania: {
                     li: ['Auxillia', 'Fusliers', 'Hexas'],
                     md: ['Bolts', 'Nisse'],
-                    hi: ['Orc', 'Aquilla Guard'],
-                    tag: ['Cutter'],
-                    rem: ['Clipper'],
-                    sk: ['Crocman']
+                    hi: ['Orcs', 'Aquilla Guard'],
+                    tag: ['Cutters'],
+                    rem: ['Clippers'],
+                    sk: ['Crocmen']
                 },
                 combinedarmy: {
-                    li: ['Vanguard', 'Seed Solider'],
-                    md: ['Rodocks', 'Yoagat'],
-                    hi: ['Chrontid', 'Suryat'],
-                    tag: ['Avatar','Sphinx'],
-                    rem: ['Q Drone','Ikadrone'],
+                    li: ['Morat Vanguard Infantry', 'Seed Soldiers'],
+                    md: ['Rodocks', 'Yoagats'],
+                    hi: ['Chrontids', 'Suryats'],
+                    tag: ['Avatars','Sphinxs'],
+                    rem: ['Q Drones','Ikadrons'],
                     sk: ['Shrouded','Malignos']
                 },
+                nomads: {
+                    li: ['Clockmakers', 'Daktaris'],
+                    md: ['Hellcats', 'Wildcats'],
+                    hi: ['Taskmasters', 'Mobile Brigadas'],
+                    tag: ['Lizard Squadron','Iguana Squadron'],
+                    rem: ['Meteor Zonds','Reaktion Zonds'],
+                    sk: ['Shrouded','Malignos']
+                }
             }]
         }
     );

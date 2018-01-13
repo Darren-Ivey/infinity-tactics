@@ -15,6 +15,7 @@ const INITIAL_STATE = {
     units: [{
             panoceania: {},
             combinedarmy: {},
+            nomads: {}
         }],
     fetching: false,
     error: undefined

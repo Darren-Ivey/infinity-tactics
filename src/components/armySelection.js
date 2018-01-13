@@ -26,7 +26,6 @@ class ArmySelection extends Component {
 
         return (
             <div>
-                <h2>{ getArmy }</h2>
                 <div className="navigation">
                     { map( getArmyListOptions, (item) => renderListItem(item)) }
                 </div>
