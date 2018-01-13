@@ -11,36 +11,21 @@ class ArmySelection extends Component {
     }
 
     handleOnClick(key) {
-        this.props.selectArmy(key)
+        this.props.selectArmy(key);
     }
 
     render() {
-        const { getUnits, getArmy, getArmyListOptions} = this.props;
-        const selection = getUnits[getArmy];
+        const { getArmyListOptions} = this.props;
 
         const renderListItem = (item) => {
             const value = Object.values(item)[0];
             const key = Object.keys(item)[0];
-            return <Link onClick={ () => { this.handleOnClick(key)}} to={ key } className="navigation__item" key={ key } >{ value }</Link>
+            return <Link onClick={ () => {this.handleOnClick(key)} } to={ key } className="navigation__item" key={ key } >{ value }</Link>
         };
 
         return (
-            <div>
-                <div className="navigation">
-                    { map( getArmyListOptions, (item) => renderListItem(item)) }
-                </div>
-                <article>
-                    <h3>Light Infantry</h3>
-                    { map(selection.li, (item, id) => <li key={ id } >{ item }</li>) }
-                </article>
-                <article>
-                    <h4>Medium Infantry</h4>
-                    { map(selection.md, (item, id) => <li key={ id } >{ item }</li>) }
-                </article>
-                <article>
-                    <h4>Heavy Infantry</h4>
-                    { map(selection.hi, (item, id) => <li key={ id } >{ item }</li>) }
-                </article>
+            <div className="navigation">
+                { map( getArmyListOptions, (item) => renderListItem(item)) }
             </div>
         );
     }

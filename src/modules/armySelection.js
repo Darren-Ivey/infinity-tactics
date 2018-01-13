@@ -4,6 +4,8 @@ import { getArmyData } from '../services/infinity-services';
 
 // actions
 export const SELECT_ARMY = 'SELECT_ARMY';
+export const SELECT_PROFILE = 'SELECT_PROFILE';
+
 export const FETCH_ARMY_DATA = 'FETCH_ARMY_DATA';
 export const FETCH_ARMY_DATA_SUCCESS = 'FETCH_ARMY_DATA_SUCCESS';
 export const FETCH_ARMY_DATA_FAILED = 'FETCH_ARMY_DATA_FAILED';
@@ -11,7 +13,8 @@ export const FETCH_ARMY_DATA_FAILED = 'FETCH_ARMY_DATA_FAILED';
 // initial state
 const INITIAL_STATE = {
     armyListOptions: {},
-    selectedArmy: 'panoceania',
+    selectedArmy: undefined,
+    selectedProfile: undefined,
     units: [{
             panoceania: {},
             combinedarmy: {},
@@ -55,6 +58,13 @@ export default(state = INITIAL_STATE, action) => {
                 ...state,
                 selectedArmy: action.payload
             };
+
+        case SELECT_PROFILE:
+            return {
+                ...state,
+                selectedProfile: action.payload
+            };
+
         default:
             return state;
     }
@@ -62,6 +72,8 @@ export default(state = INITIAL_STATE, action) => {
 
 // action creators
 export const selectArmy = createAction(SELECT_ARMY);
+export const selectProfile = createAction(SELECT_PROFILE)
+
 export const fetchArmyData = createAction(FETCH_ARMY_DATA);
 export const fetchArmyDataSuccess = createAction(FETCH_ARMY_DATA_SUCCESS);
 export const fetchArmyDataFailed = createAction(FETCH_ARMY_DATA_FAILED);

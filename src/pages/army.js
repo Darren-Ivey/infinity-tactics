@@ -1,16 +1,33 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ArmySelection from '../components/armySelection';
-import { selectArmy, getArmy, getUnits, getArmyListOptions } from '../modules/armySelection';
+import ArmyType from '../components/armyType';
+import { selectProfile, selectArmy, getArmy, getUnits, getArmyListOptions } from '../modules/armySelection';
 
-const Army = ({ selectArmy, getArmy, getUnits, getArmyListOptions }) => {
-        return (
-            <ArmySelection
-                selectArmy={ selectArmy }
-                getArmy={ getArmy }
-                getUnits={ getUnits }
-                getArmyListOptions={ getArmyListOptions } />
-        );
+const Army = ({ selectProfile, selectArmy, getArmy, getUnits, getArmyListOptions }) => {
+
+        const ARMY_SELECTED = 'ARMY_SELECTED';
+        const armySelected = getArmy ? ARMY_SELECTED : null;
+
+        switch (armySelected) {
+
+            case ARMY_SELECTED:
+                return (
+                    <ArmyType
+                        selectProfile={ selectProfile }
+                        getArmy={ getArmy }
+                        getUnits={ getUnits } />
+                );
+
+            default:
+                return (
+                    <ArmySelection
+                        getArmy={ getArmy }
+                        selectArmy={ selectArmy }
+                        getArmyListOptions={ getArmyListOptions }/>
+                );
+        }
+
     };
 
 const mapStateToProps = (state) => {
@@ -23,7 +40,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        selectArmy: (data) => dispatch(selectArmy(data))
+        selectArmy: (data) => dispatch(selectArmy(data)),
+        selectProfile: (data) => dispatch(selectProfile(data))
     };
 };
 

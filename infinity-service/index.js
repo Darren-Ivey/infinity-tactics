@@ -8,13 +8,17 @@ app.get("/armyData", (req, res) => {
     res.send(
         {
             arrmyType: [
-                {'panoceania': 'Pan Oceania'},
-                {'combinedarmy': 'Combined Army'},
-                { 'nomads' : 'Nomads'}
+                {'panoceania':'Pan Oceania'},
+                {'combinedarmy':'Combined Army'},
+                { 'nomads':'Nomads'}
             ],
             armyProfiles: [{
                 panoceania: {
-                    li: ['Auxillia', 'Fusliers', 'Hexas'],
+                    li: [
+                        {'auxillia':'Auxillia'},
+                        {'fusliers':'Fusliers'},
+                        {'hexas':'Hexas'}
+                    ],
                     md: ['Bolts', 'Nisse'],
                     hi: ['Orcs', 'Aquilla Guard'],
                     tag: ['Cutters'],
@@ -22,7 +26,10 @@ app.get("/armyData", (req, res) => {
                     sk: ['Crocmen']
                 },
                 combinedarmy: {
-                    li: ['Morat Vanguard Infantry', 'Seed Soldiers'],
+                    li: [
+                        {'morat-vanguard':'Morat Vanguard Infantry'},
+                        {'seed-soldiers':'Seed Soldiers'}
+                    ],
                     md: ['Rodocks', 'Yoagats'],
                     hi: ['Chrontids', 'Suryats'],
                     tag: ['Avatars','Sphinxs'],
@@ -30,7 +37,10 @@ app.get("/armyData", (req, res) => {
                     sk: ['Shrouded','Malignos']
                 },
                 nomads: {
-                    li: ['Clockmakers', 'Daktaris'],
+                    li: [
+                        {'clockmakers': 'Clockmakers'},
+                        {'daktaris': 'Daktaris'}
+                    ],
                     md: ['Hellcats', 'Wildcats'],
                     hi: ['Taskmasters', 'Mobile Brigadas'],
                     tag: ['Lizard Squadron','Iguana Squadron'],
