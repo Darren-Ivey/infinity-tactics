@@ -14,26 +14,21 @@ class ArmySelection extends Component {
         this.props.selectArmy(key)
     }
 
-
     render() {
-        const { getUnits, getArmy} = this.props;
+        const { getUnits, getArmy, getArmyListOptions} = this.props;
         const selection = getUnits[getArmy];
 
         const renderListItem = (item) => {
             const value = Object.values(item)[0];
             const key = Object.keys(item)[0];
             return <Link onClick={ () => { this.handleOnClick(key)}} to={ key } className="navigation__item" key={ key } >{ value }</Link>
-        }
+        };
 
         return (
             <div>
-                <h2>{ this.props.getArmy }</h2>
+                <h2>{ getArmy }</h2>
                 <div className="navigation">
-                    {
-                        map(this.props.getArmyListOptions, (item) => {
-                            return renderListItem(item);
-                        })
-                    }
+                    { map( getArmyListOptions, (item) => renderListItem(item)) }
                 </div>
                 <article>
                     <h3>Light Infantry</h3>
