@@ -2,9 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import ArmySelection from '../components/armySelection';
 import ArmyType from '../components/armyType';
-import { selectProfile, selectArmy, getArmy, getUnits, getArmyListOptions } from '../modules/armySelection';
+import { getSelectedProfile, selectProfile, selectArmy, getArmy, getUnits, getArmyListOptions } from '../modules/armySelection';
 
-const Army = ({ selectProfile, selectArmy, getArmy, getUnits, getArmyListOptions }) => {
+const Army = ({ selectProfile, selectArmy, getArmy, getUnits, getArmyListOptions, getSelectedProfile }) => {
 
         const ARMY_SELECTED = 'ARMY_SELECTED';
         const armySelected = getArmy ? ARMY_SELECTED : null;
@@ -16,7 +16,8 @@ const Army = ({ selectProfile, selectArmy, getArmy, getUnits, getArmyListOptions
                     <ArmyType
                         selectProfile={ selectProfile }
                         getArmy={ getArmy }
-                        getUnits={ getUnits } />
+                        getUnits={ getUnits }
+                        getSelectedProfile={ getSelectedProfile } />
                 );
 
             default:
@@ -24,7 +25,7 @@ const Army = ({ selectProfile, selectArmy, getArmy, getUnits, getArmyListOptions
                     <ArmySelection
                         getArmy={ getArmy }
                         selectArmy={ selectArmy }
-                        getArmyListOptions={ getArmyListOptions }/>
+                        getArmyListOptions={ getArmyListOptions } />
                 );
         }
 
@@ -34,7 +35,8 @@ const mapStateToProps = (state) => {
     return {
         getArmy: getArmy(state),
         getUnits: getUnits(state),
-        getArmyListOptions: getArmyListOptions(state)
+        getArmyListOptions: getArmyListOptions(state),
+        getSelectedProfile: getSelectedProfile(state)
     };
 };
 

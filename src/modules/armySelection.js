@@ -72,7 +72,7 @@ export default(state = INITIAL_STATE, action) => {
 
 // action creators
 export const selectArmy = createAction(SELECT_ARMY);
-export const selectProfile = createAction(SELECT_PROFILE)
+export const selectProfile = createAction(SELECT_PROFILE);
 
 export const fetchArmyData = createAction(FETCH_ARMY_DATA);
 export const fetchArmyDataSuccess = createAction(FETCH_ARMY_DATA_SUCCESS);
@@ -87,6 +87,9 @@ export const getArmyListOptions = (state) => {
 };
 export const getUnits = (state) => {
     return state.armySelection.units[0];
+};
+export const getSelectedProfile = (state) => {
+    return state.armySelection.selectedProfile;
 };
 
 // sagas
