@@ -29,6 +29,26 @@ class ArmyType extends Component {
                     <h3>Light Infantry</h3>
                     { map( selection.li, (item) => this.renderListItem(item)) }
                 </article>
+                <article>
+                    <h3>Medium Infantry</h3>
+                    { map( selection.md, (item) => this.renderListItem(item)) }
+                </article>
+                <article>
+                    <h3>Heavy Infantry</h3>
+                    { map( selection.hi, (item) => this.renderListItem(item)) }
+                </article>
+                <article>
+                    <h3>TAG</h3>
+                    { map( selection.tag, (item) => this.renderListItem(item)) }
+                </article>
+                <article>
+                    <h3>Remote</h3>
+                    { map( selection.rem, (item) => this.renderListItem(item)) }
+                </article>
+                <article>
+                    <h3>Skirmisher</h3>
+                    { map( selection.sk, (item) => this.renderListItem(item)) }
+                </article>
             </div>
         );
     }
