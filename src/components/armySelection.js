@@ -18,8 +18,8 @@ class ArmySelection extends Component {
         const { getArmyListOptions} = this.props;
 
         const renderListItem = (item) => {
-            const value = Object.values(item)[0];
-            const key = Object.keys(item)[0];
+            const value = item.name;
+            const key = item.id;
             return <Link onClick={ () => {this.handleOnClick(key)} } to={ key } className="navigation__item" key={ key } >{ value }</Link>
         };
 

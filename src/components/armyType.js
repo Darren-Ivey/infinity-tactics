@@ -14,8 +14,8 @@ class ArmyType extends Component {
     }
 
     renderListItem(item) {
-        const value = Object.values(item)[0];
-        const key = Object.keys(item)[0];
+        const value = item.name;
+        const key = item.id
         return <li onClick={ () => {this.handleOnClick(key)} } key={ `light-${key}` } >{ value }</li>
     };
 
