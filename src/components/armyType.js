@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { map } from 'lodash/collection';
 import './armySelection.css';
-import Profile from './profile'
+import Profile from './profile';
+import { Link } from 'react-router-dom';
 
 class ArmyType extends Component {
 
@@ -17,7 +18,7 @@ class ArmyType extends Component {
     renderListItem(item) {
         const value = item.name;
         const key = item.id
-        return <li onClick={ () => {this.handleOnClick(key)} } key={ `light-${key}` } >{ value }</li>
+        return <li key={ `${value}-${key}` }><Link to={ key } onClick={ () => {this.handleOnClick(key)} } >{ value }</Link></li>
     };
 
     render() {
@@ -29,27 +30,27 @@ class ArmyType extends Component {
                 <div>
                     <article>
                         <h3>Light Infantry</h3>
-                        { map( selection.li, (item) => this.renderListItem(item)) }
+                        <ul>{ map( selection.li, (item) => this.renderListItem(item)) }</ul>
                     </article>
                     <article>
                         <h3>Medium Infantry</h3>
-                        { map( selection.md, (item) => this.renderListItem(item)) }
+                        <ul>{ map( selection.md, (item) => this.renderListItem(item)) }</ul>
                     </article>
                     <article>
                         <h3>Heavy Infantry</h3>
-                        { map( selection.hi, (item) => this.renderListItem(item)) }
+                        <ul>{ map( selection.hi, (item) => this.renderListItem(item)) }</ul>
                     </article>
                     <article>
                         <h3>TAG</h3>
-                        { map( selection.tag, (item) => this.renderListItem(item)) }
+                        <ul>{ map( selection.tag, (item) => this.renderListItem(item)) }</ul>
                     </article>
                     <article>
                         <h3>Remote</h3>
-                        { map( selection.rem, (item) => this.renderListItem(item)) }
+                        <ul>{ map( selection.rem, (item) => this.renderListItem(item)) }</ul>
                     </article>
                     <article>
                         <h3>Skirmisher</h3>
-                        { map( selection.sk, (item) => this.renderListItem(item)) }
+                        <ul>{ map( selection.sk, (item) => this.renderListItem(item)) }</ul>
                     </article>
                 </div>
                 <div>

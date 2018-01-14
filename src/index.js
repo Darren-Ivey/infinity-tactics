@@ -13,6 +13,7 @@ import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
 import { rootReducer, rootSaga } from './modules/index.js';
 import createSagaMiddleware from 'redux-saga';
 import Army from './pages/army';
+import Profile from './components/profile';
 
 const history = createHistory();
 const middleware = routerMiddleware(history);
@@ -29,7 +30,9 @@ render(
     <Provider store={store}>
         <ConnectedRouter history={history}>
             <App path="/:id">
-                <Army path="/li" />
+                <Army path="/li">
+                    <Profile path="/:id" />
+                </Army>
             </App>
         </ConnectedRouter>
     </Provider>,

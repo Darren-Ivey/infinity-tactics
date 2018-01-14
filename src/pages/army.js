@@ -19,22 +19,20 @@ class Army extends Component {
 
     renderArmyType () {
         const { selectProfile,
-            getArmy, getUnits,
-            getSelectedProfile } = this.props;
+            getArmy, getUnits } = this.props;
         return (
             <ArmyType
                 selectProfile={ selectProfile }
                 getArmy={ getArmy }
-                getUnits={ getUnits }
-                getSelectedProfile={ getSelectedProfile }/>
+                getUnits={ getUnits }/>
         );
     }
 
     renderProfile () {
-        const {  getStatus } = this.props;
+        const {  getSelectedProfile } = this.props;
         return (
             <Profile
-                getStatus={ getStatus }/>
+                selectedProfile={ getSelectedProfile }/>
         );
     }
 
