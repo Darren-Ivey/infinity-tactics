@@ -10,8 +10,13 @@ export const FETCH_ARMY_DATA = 'FETCH_ARMY_DATA';
 export const FETCH_ARMY_DATA_SUCCESS = 'FETCH_ARMY_DATA_SUCCESS';
 export const FETCH_ARMY_DATA_FAILED = 'FETCH_ARMY_DATA_FAILED';
 
+// States
+const ARMY_SELECTED = 'ARMY_SELECTED';
+const PROFILE_SELECTED = 'PROFILE_SELECTED';
+
 // initial state
 const INITIAL_STATE = {
+    status: 'uninitiated',
     armyListOptions: {},
     selectedArmy: undefined,
     selectedProfile: undefined,
@@ -56,13 +61,15 @@ export default(state = INITIAL_STATE, action) => {
         case SELECT_ARMY:
             return {
                 ...state,
-                selectedArmy: action.payload
+                selectedArmy: action.payload,
+                status: ARMY_SELECTED
             };
 
         case SELECT_PROFILE:
             return {
                 ...state,
-                selectedProfile: action.payload
+                selectedProfile: action.payload,
+                status: PROFILE_SELECTED
             };
 
         default:
@@ -90,6 +97,9 @@ export const getUnits = (state) => {
 };
 export const getSelectedProfile = (state) => {
     return state.armySelection.selectedProfile;
+};
+export const getStatus = (state) => {
+    return state.armySelection.status;
 };
 
 // sagas
