@@ -8,3 +8,6 @@ public
 
 # misc
 .idea
+
+# dotenv environment variables file
+.env
