@@ -14,10 +14,11 @@ MongoClient.connect(`mongodb://${mongoUser}:${mongoPw}@ds111078.mlab.com:11078/i
     app.listen(3003, () => console.log('listening on 3003'))
 });
 
-app.get('/armydata/panoceania', (req, res) => {
-    db.collection('panoceania').find().toArray((err, result) => {
+app.get('/armydata/:id', (req, res) => {
+    const { id } = req.params;
+    db.collection(id).find().toArray((err, result) => {
         if (err) return console.log(err);
-        res.send({panoceania: result});
+        res.send({[id]: result});
         console.log("result: ", result)
     });
 });
