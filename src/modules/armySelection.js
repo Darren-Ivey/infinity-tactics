@@ -17,14 +17,14 @@ const PROFILE_SELECTED = 'PROFILE_SELECTED';
 // initial state
 const INITIAL_STATE = {
     status: 'uninitiated',
-    armyListOptions: [{id: 'panoceania', name:'Pan Oceania'}],
+    armyListOptions: [
+        {id: 'panoceania', name:'Pan Oceania'},
+        {id:'combinedarmy', name:'Combined Army'},
+        {id: 'nomads', name: 'Nomads'}
+    ],
     selectedArmy: undefined,
     selectedProfile: undefined,
-    units: [{
-            panoceania: {},
-            combinedarmy: {},
-            nomads: {}
-        }],
+    units: undefined,
     fetching: false,
     error: undefined
 };
@@ -102,10 +102,10 @@ export const getStatus = (state) => {
 };
 
 // sagas
-export function* fetchArmyDataSaga () {
+export function* fetchArmyDataSaga (id) {
     yield put(fetchArmyData());
     try {
-        const response = yield call(getArmyData);
+        const response = yield call(getArmyData, id);
         yield put(fetchArmyDataSuccess(response));
     } catch (error) {
         yield put(fetchArmyDataFailed(error));

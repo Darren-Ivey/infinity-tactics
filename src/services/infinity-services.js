@@ -7,8 +7,8 @@ const getOptions = {
     },
 };
 
-export const getArmyData = () => {
-    return fetch("http://localhost:3003/armydata/panoceania", getOptions)
+export const getArmyData = (armyType) => {
+    return fetch(`http://localhost:3003/armydata/${armyType}`, getOptions)
         .then(r => r.json())
         .catch(error => console.log({
             code: error

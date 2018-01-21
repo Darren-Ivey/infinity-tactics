@@ -41,13 +41,10 @@ class Army extends Component {
 
         switch(status) {
             case 'ARMY_SELECTED':
-                console.log("ARMY_SELECTED: ", status)
                 return this.renderArmyType();
             case 'PROFILE_SELECTED':
-                console.log("PROFILE_SELECTED: ", status)
                 return this.renderProfile();
             default:
-                console.log("Default: ", status)
                 return this.renderArmySelection();
         }
 

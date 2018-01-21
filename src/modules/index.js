@@ -1,18 +1,20 @@
 import armySelection, { fetchArmyDataSaga } from './armySelection';
 import appStatus, { APP_UNLOADED, appLoaded } from './appStatus';
+import { SELECT_ARMY } from './armySelection'
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
-import { call, all, fork, take, put } from 'redux-saga/effects';
+import { call, all, fork, take, takeLatest, put } from 'redux-saga/effects';
 
 function* watchAppLoading() {
     while (yield take(APP_UNLOADED)) {
-
-        yield all([
-            call(fetchArmyDataSaga)
-        ]);
-
+        // Initial actions before app loads
         yield put(appLoaded());
     }
+}
+
+function* watchArmySelection() {
+    const { payload } = yield take(SELECT_ARMY);
+    yield call(fetchArmyDataSaga, payload);
 }
 
 export const rootReducer = combineReducers({
@@ -23,7 +25,7 @@ export const rootReducer = combineReducers({
 
 export function* rootSaga () {
     yield all([
-        // fork(watchArmySelection),
+        fork(watchArmySelection),
         fork(watchAppLoading)
     ])
 }

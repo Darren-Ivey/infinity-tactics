@@ -16,49 +16,59 @@ class ArmyType extends Component {
     }
 
     renderListItem(item) {
-        console.log(item)
         const value = item.common_name;
         const key = item.id_name;
+
         return <li key={ `${value}-${key}` }><Link to={ key } onClick={ () => {this.handleOnClick(key)} } >{ value }</Link></li>
     };
 
-    render() {
+    renderArmyTypes () {
         const { getUnits, getArmy, getSelectedProfile } = this.props;
         const selection = getUnits[getArmy];
 
-        return (
+        return(
             <div>
                 <div>
                     <article>
                         <h3>Light Infantry</h3>
                         <ul>{ map(filter(selection, {'type': 'li'}), (item) => this.renderListItem(item)) }</ul>
                     </article>
-                    <article>
-                        <h3>Medium Infantry</h3>
-                        <ul>{ map( selection.md, (item) => this.renderListItem(item)) }</ul>
-                    </article>
-                    <article>
-                        <h3>Heavy Infantry</h3>
-                        <ul>{ map( selection.hi, (item) => this.renderListItem(item)) }</ul>
-                    </article>
-                    <article>
-                        <h3>TAG</h3>
-                        <ul>{ map( selection.tag, (item) => this.renderListItem(item)) }</ul>
-                    </article>
-                    <article>
-                        <h3>Remote</h3>
-                        <ul>{ map( selection.rem, (item) => this.renderListItem(item)) }</ul>
-                    </article>
-                    <article>
-                        <h3>Skirmisher</h3>
-                        <ul>{ map( selection.sk, (item) => this.renderListItem(item)) }</ul>
-                    </article>
+                    {/*<article>*/}
+                        {/*<h3>Medium Infantry</h3>*/}
+                        {/*<ul>{ map( selection.md, (item) => this.renderListItem(item)) }</ul>*/}
+                    {/*</article>*/}
+                    {/*<article>*/}
+                        {/*<h3>Heavy Infantry</h3>*/}
+                        {/*<ul>{ map( selection.hi, (item) => this.renderListItem(item)) }</ul>*/}
+                    {/*</article>*/}
+                    {/*<article>*/}
+                        {/*<h3>TAG</h3>*/}
+                        {/*<ul>{ map( selection.tag, (item) => this.renderListItem(item)) }</ul>*/}
+                    {/*</article>*/}
+                    {/*<article>*/}
+                        {/*<h3>Remote</h3>*/}
+                        {/*<ul>{ map( selection.rem, (item) => this.renderListItem(item)) }</ul>*/}
+                    {/*</article>*/}
+                    {/*<article>*/}
+                        {/*<h3>Skirmisher</h3>*/}
+                        {/*<ul>{ map( selection.sk, (item) => this.renderListItem(item)) }</ul>*/}
+                    {/*</article>*/}
                 </div>
                 <div>
-                      <Profile selectedProfile={ getSelectedProfile } />
+                    <Profile selectedProfile={ getSelectedProfile } />
                 </div>
             </div>
-        );
+        )
+    }
+
+    renderLoader() {
+        return <p>Loading...</p>
+    }
+
+    render() {
+        const { getUnits } = this.props
+
+        return (getUnits ? this.renderArmyTypes() : this.renderLoader())
     }
 }
 
