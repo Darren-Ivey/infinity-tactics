@@ -17,7 +17,7 @@ const PROFILE_SELECTED = 'PROFILE_SELECTED';
 // initial state
 const INITIAL_STATE = {
     status: 'uninitiated',
-    armyListOptions: {},
+    armyListOptions: [{id: 'panoceania', name:'Pan Oceania'}],
     selectedArmy: undefined,
     selectedProfile: undefined,
     units: [{
@@ -47,8 +47,7 @@ export default(state = INITIAL_STATE, action) => {
                 ...state,
                 fetching: false,
                 error: undefined,
-                armyListOptions: payload.arrmyType,
-                units: payload.armyProfiles
+                units: payload
             };
 
         case FETCH_ARMY_DATA_FAILED:
@@ -93,7 +92,7 @@ export const getArmyListOptions = (state) => {
     return state.armySelection.armyListOptions;
 };
 export const getUnits = (state) => {
-    return state.armySelection.units[0];
+    return state.armySelection.units;
 };
 export const getSelectedProfile = (state) => {
     return state.armySelection.selectedProfile;

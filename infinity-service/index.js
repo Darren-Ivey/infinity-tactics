@@ -17,7 +17,7 @@ MongoClient.connect(`mongodb://${mongoUser}:${mongoPw}@ds111078.mlab.com:11078/i
 app.get('/armydata/panoceania', (req, res) => {
     db.collection('panoceania').find().toArray((err, result) => {
         if (err) return console.log(err);
-        res.send({pano: result});
+        res.send({panoceania: result});
         console.log("result: ", result)
     });
 });

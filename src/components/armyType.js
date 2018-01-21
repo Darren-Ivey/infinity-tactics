@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { map } from 'lodash/collection';
+import { map, filter } from 'lodash/collection';
 import './armySelection.css';
 import Profile from './profile';
 import { Link } from 'react-router-dom';
@@ -16,8 +16,9 @@ class ArmyType extends Component {
     }
 
     renderListItem(item) {
-        const value = item.name;
-        const key = item.id
+        console.log(item)
+        const value = item.common_name;
+        const key = item.id_name;
         return <li key={ `${value}-${key}` }><Link to={ key } onClick={ () => {this.handleOnClick(key)} } >{ value }</Link></li>
     };
 
@@ -30,7 +31,7 @@ class ArmyType extends Component {
                 <div>
                     <article>
                         <h3>Light Infantry</h3>
-                        <ul>{ map( selection.li, (item) => this.renderListItem(item)) }</ul>
+                        <ul>{ map(filter(selection, {'type': 'li'}), (item) => this.renderListItem(item)) }</ul>
                     </article>
                     <article>
                         <h3>Medium Infantry</h3>
