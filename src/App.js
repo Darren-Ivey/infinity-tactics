@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './App.css';
 import { getAppStatus, appUnloaded } from './modules/appStatus';
+import Army from './pages/army';
+import { Route } from 'react-router-dom';
 
 class App extends Component {
 
@@ -11,16 +13,16 @@ class App extends Component {
     }
 
     render() {
-    return (
-        <div className="App">
+        return (
             <div className="App">
-                <h1>Infinity Tactics</h1>
-                <div className="App-intro">
-                    { this.props.children }
+                <div className="App">
+                    <h1>Infinity Tactics</h1>
+                    <div className="App-intro">
+                        <Route component={ Army } path="/"  />
+                    </div>
                 </div>
             </div>
-        </div>
-    );
+        );
   }
 }
 

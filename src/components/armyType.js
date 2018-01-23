@@ -18,8 +18,9 @@ class ArmyType extends Component {
     renderListItem(item) {
         const value = item.common_name;
         const key = item.id_name;
+        const { getArmy } = this.props;
 
-        return <li key={ `${value}-${key}` }><Link to={ key } onClick={ () => {this.handleOnClick(key)} } >{ value }</Link></li>
+        return <li key={ `${value}-${key}` }><Link to={ `${getArmy}/${key}` } onClick={ () => {this.handleOnClick(key)} } >{ value }</Link></li>
     };
 
     renderArmyTypes () {
