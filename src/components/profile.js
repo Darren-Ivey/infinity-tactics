@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
-import { map } from 'lodash/collection';
-import './armySelection.css';
+import React from 'react';
 
 const Profile = ({selectedProfile}) => {
     return (
         selectedProfile ?
         <div>
             <p>Selected Profile:{ selectedProfile }</p>
-        </div> : null
+        </div> : <div>Loading profile...</div>
     );
 };
 

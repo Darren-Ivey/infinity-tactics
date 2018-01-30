@@ -24,9 +24,15 @@ const INITIAL_STATE = {
     ],
     selectedArmy: undefined,
     selectedProfile: undefined,
-    units: undefined,
+    units: [],
     fetching: false,
     error: undefined
+};
+
+const concatenateUnits = (units, payload) => {
+    const key = Object.keys(payload);
+    const values = Object.values(payload);
+    return { ...units, [key]: values[0] }
 };
 
 export default(state = INITIAL_STATE, action) => {
@@ -47,27 +53,27 @@ export default(state = INITIAL_STATE, action) => {
                 ...state,
                 fetching: false,
                 error: undefined,
-                units: payload
+                units: concatenateUnits(state.units, payload)
             };
 
         case FETCH_ARMY_DATA_FAILED:
             return {
                 ...state,
                 fetching: false,
-                error: action.payload
+                error: payload
             };
 
         case SELECT_ARMY:
             return {
                 ...state,
-                selectedArmy: action.payload,
+                selectedArmy: payload,
                 status: ARMY_SELECTED
             };
 
         case SELECT_PROFILE:
             return {
                 ...state,
-                selectedProfile: action.payload,
+                selectedProfile: payload,
                 status: PROFILE_SELECTED
             };
 
@@ -97,15 +103,13 @@ export const getUnits = (state) => {
 export const getSelectedProfile = (state) => {
     return state.armySelection.selectedProfile;
 };
-export const getStatus = (state) => {
-    return state.armySelection.status;
-};
 
 // sagas
-export function* fetchArmyDataSaga (id) {
+export function* fetchArmyDataSaga (action) {
+    const { payload } = action;
     yield put(fetchArmyData());
     try {
-        const response = yield call(getArmyData, id);
+        const response = yield call(getArmyData, payload);
         yield put(fetchArmyDataSuccess(response));
     } catch (error) {
         yield put(fetchArmyDataFailed(error));

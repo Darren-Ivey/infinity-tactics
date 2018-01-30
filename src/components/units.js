@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import { map, filter } from 'lodash/collection';
-import './armySelection.css';
-import Profile from './profile';
 import { Link } from 'react-router-dom';
 
-class ArmyType extends Component {
+class Units extends Component {
 
     constructor(props) {
         super(props);
@@ -20,11 +18,11 @@ class ArmyType extends Component {
         const key = item.id_name;
         const { getArmy } = this.props;
 
-        return <li key={ `${value}-${key}` }><Link to={ `${getArmy}/${key}` } onClick={ () => {this.handleOnClick(key)} } >{ value }</Link></li>
+        return <li key={ `${value}-${key}` }><Link to={ `/profile/:${key}` } onClick={ () => {this.handleOnClick(key)} } >{ value }</Link></li>
     };
 
     renderArmyTypes () {
-        const { getUnits, getArmy, getSelectedProfile } = this.props;
+        const { getUnits, getArmy } = this.props;
         const selection = getUnits[getArmy];
 
         return(
@@ -55,22 +53,18 @@ class ArmyType extends Component {
                         {/*<ul>{ map( selection.sk, (item) => this.renderListItem(item)) }</ul>*/}
                     {/*</article>*/}
                 </div>
-                <div>
-                    <Profile selectedProfile={ getSelectedProfile } />
-                </div>
             </div>
         )
     }
 
     renderLoader() {
-        return <p>Loading...</p>
+        return <p>Loading units...</p>
     }
 
     render() {
-        const { getUnits } = this.props
-
+        const { getUnits } = this.props;
         return (getUnits ? this.renderArmyTypes() : this.renderLoader())
     }
 }
 
-export default ArmyType;
+export default Units;
