@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { map } from 'lodash/collection';
 import { Link } from 'react-router-dom';
-import './armySelection.css';
+import './army.css';
 
-class ArmySelection extends Component {
+class Army extends Component {
 
     constructor(props) {
         super(props);
@@ -20,7 +20,7 @@ class ArmySelection extends Component {
         const renderListItem = (item) => {
             const value = item.name;
             const key = item.id;
-            return <Link onClick={ () => {this.handleOnClick(key)} } to={ key } className="navigation__item" key={ key } >{ value }</Link>
+            return <Link onClick={ () => {this.handleOnClick(key)} } to={ `/units/:${ key }` } className="navigation__item" key={ key } >{ value }</Link>
         };
 
         return (
@@ -31,4 +31,4 @@ class ArmySelection extends Component {
     }
 }
 
-export default ArmySelection;
+export default Army;
