@@ -7,6 +7,8 @@ app.use(cors());
 
 let db;
 
+const mongoUser = 'infinity-tactics-user';
+const mongoPw = 'hikdmHG6UPY3';
 
 MongoClient.connect(`mongodb://${mongoUser}:${mongoPw}@ds111078.mlab.com:11078/infinity-tactics`, (err, database) => {
     if (err) return console.log(err);
@@ -19,6 +21,9 @@ app.get('/armydata/:id', (req, res) => {
     db.collection(id).find().toArray((err, result) => {
         if (err) return console.log(err);
         res.send({[id]: result});
-        console.log("result: ", result)
     });
+});
+
+app.post('/tactics', (req, res) => {
+    console.log(req.body);
 });
