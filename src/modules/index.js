@@ -3,7 +3,7 @@ import appStatus, { APP_UNLOADED, appLoaded } from './appStatus';
 import { SELECT_ARMY } from './armySelection'
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
-import { call, all, fork, take, put, takeLatest } from 'redux-saga/effects';
+import { all, fork, take, put, takeLatest } from 'redux-saga/effects';
 import { split, startsWith } from 'lodash/string';
 
 

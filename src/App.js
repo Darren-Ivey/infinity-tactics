@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './App.css';
 import { getAppStatus, appUnloaded } from './modules/appStatus';
-import ArmySelectionPage from './pages/armySelection';
-import UnitProfilePage from './pages/unitProfile';
-import UnitTypesPage from './pages/unitTypes';
+import ArmySelectionPage from './providers/armySelection';
+import UnitProfilePage from './providers/unitProfile';
+import UnitTypesPage from './providers/unitTypes';
 import { Route, Switch, Link } from 'react-router-dom';
 
 class App extends Component {
