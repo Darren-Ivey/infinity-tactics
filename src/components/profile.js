@@ -20,6 +20,7 @@ class Profile extends Component {
 
     handleSubmit (e) {
         e.preventDefault();
+        console.log(e.target.value)
     }
 
     renderForm () {
