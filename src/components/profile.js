@@ -20,7 +20,7 @@ class Profile extends Component {
 
     handleSubmit (e) {
         e.preventDefault();
-        console.log(e.target.value)
+        console.log(e)
     }
 
     renderForm () {
@@ -39,7 +39,7 @@ class Profile extends Component {
     renderProfile () {
         return(
             <div>
-                <p>Selected Profile:{ this.selectedProfile }</p>
+                <p>Selected Profile:{ this.state.selectedProfile }</p>
                 { this.renderForm() }
             </div>
         )

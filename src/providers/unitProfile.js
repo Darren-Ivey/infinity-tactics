@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Profile from '../components/profile';
 import { getSelectedProfile, selectProfile } from '../modules/armySelection';
 
-class unitProfilePage extends Component {
+class unitProfileProvider extends Component {
 
     render () {
         const {  getSelectedProfile } = this.props;
@@ -26,4 +26,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(unitProfilePage);
+export default connect(mapStateToProps, mapDispatchToProps)(unitProfileProvider);

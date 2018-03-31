@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Army from '../components/army';
 import { selectArmy, getArmy, getArmyListOptions } from '../modules/armySelection';
 
-class ArmySelectionPage extends Component {
+class ArmySelectionProvider extends Component {
     render () {
         const { selectArmy, getArmy, getArmyListOptions } = this.props;
         return (
@@ -28,4 +28,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ArmySelectionPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ArmySelectionProvider);

@@ -10,22 +10,15 @@ import { split, startsWith } from 'lodash/string';
 function* checkUrlForProps () {
     while (yield take(APP_UNLOADED)) {
 
-        const getPropFromUrl = (pathname) => {
-            const path = split(pathname, '/:', 2);
-            return path[1];
-        };
+        const { search, pathname } = window.location;
+        const payload = split(search, '?=', 2);
 
-        const { pathname } = window.location;
-        const path = split(pathname, '/', 2);
-        const type = path[1];
-        const payload = getPropFromUrl(pathname);
-
-        switch (type) {
-            case 'units':
-                yield put(selectArmy(payload));
+        switch (pathname) {
+            case '/units':
+                yield put(selectArmy(payload[1]));
                 break;
-            case 'profile':
-                yield put(selectProfile(payload));
+            case '/profile':
+                yield put(selectProfile(payload[1]));
                 break;
         }
     }

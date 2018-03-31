@@ -20,7 +20,7 @@ class Army extends Component {
         const renderListItem = (item) => {
             const value = item.name;
             const key = item.id;
-            return <Link onClick={ () => {this.handleOnClick(key)} } to={ `/units/${ key }` } className="navigation__item" key={ key } >{ value }</Link>
+            return <Link onClick={ () => {this.handleOnClick(key)} } to={ `/units?=${ key }` } className="navigation__item" key={ key } >{ value }</Link>
         };
 
         return (

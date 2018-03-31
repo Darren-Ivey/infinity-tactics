@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Units from '../components/units';
 import { selectProfile, getArmy, getUnits } from '../modules/armySelection';
 
-class UnitTypesPage extends Component {
+class UnitTypesProvider extends Component {
 
     render () {
         const { selectProfile, getArmy, getUnits } = this.props;
@@ -29,4 +29,4 @@ const mapDispatchToProps = (dispatch) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(UnitTypesPage);
+export default connect(mapStateToProps, mapDispatchToProps)(UnitTypesProvider);

@@ -18,9 +18,9 @@ const PROFILE_SELECTED = 'PROFILE_SELECTED';
 const INITIAL_STATE = {
     status: 'uninitiated',
     armyListOptions: [
-        {id: 'panoceania', name:'Pan Oceania'},
-        {id:'combinedarmy', name:'Combined Army'},
-        {id: 'nomads', name: 'Nomads'}
+        { id: 'panoceania', name:'Pan Oceania' },
+        { id:'combinedarmy', name:'Combined Army' },
+        { id: 'nomads', name: 'Nomads' }
     ],
     selectedArmy: undefined,
     selectedProfile: undefined,
