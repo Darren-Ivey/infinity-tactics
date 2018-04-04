@@ -4,7 +4,7 @@ class Profile extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            value: '',
+            tactic: '',
             selectedProfile: this.props.selectedProfile
         };
 
@@ -12,21 +12,21 @@ class Profile extends Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChange(event) {
+    handleChange(e) {
         this.setState({
-            value: event.target.value
+            tactic: e.target.value
         });
     }
 
     handleSubmit (e) {
         e.preventDefault();
-        console.log(e)
+        this.props.submitTactics(this.state.tactic);
     }
 
     renderForm () {
         return (
             <form onSubmit={ this.handleSubmit }>
-                <textarea value={ this.state.value } onChange={ this.handleChange } type="text" placeholder="tactic" name="tactic" />
+                <textarea value={ this.state.tactic } onChange={ this.handleChange } type="text" placeholder="tactic" name="tactic" />
                 <button type="submit">Submit</button>
             </form>
         )

@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Profile from '../components/profile';
 import { getSelectedProfile, selectProfile } from '../modules/armySelection';
+import { submitTactics } from '../modules/tactics';
 
 class unitProfileProvider extends Component {
 
     render () {
-        const {  getSelectedProfile } = this.props;
+        const {  getSelectedProfile, submitTactics } = this.props;
         return (
             <Profile
+                submitTactics={ submitTactics }
                 selectedProfile={ getSelectedProfile }/>
         );
     }
@@ -22,7 +24,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        selectProfile: (data) => dispatch(selectProfile(data))
+        selectProfile: (data) => dispatch(selectProfile(data)),
+        submitTactics: (data) => dispatch(submitTactics(data))
     };
 };
 

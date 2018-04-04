@@ -26,4 +26,5 @@ app.get('/armydata/:id', (req, res) => {
 
 app.post('/tactics', (req, res) => {
     console.log(req.body);
+    res.send({result: 'Result!'});
 });
