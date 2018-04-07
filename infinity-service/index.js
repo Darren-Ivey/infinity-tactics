@@ -26,9 +26,8 @@ app.get('/armydata/:id', (req, res) => {
     });
 });
 
-
-
-app.post('/tactics', (req, res) => {;
-    res.set('Content-Type', 'application/json');
-    res.send({response:`You sent: ${req.body.tactic} to Express`});
-});
+app.post('/tactics', (req, res) => {
+    db.collection('tactics').insert(req.body, (err, result) => {
+        if (err) return console.log(err)
+    })
+})
