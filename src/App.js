@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './App.css';
 import { getAppStatus, appUnloaded } from './modules/appStatus';
-import ArmySelectionPage from './pages/armySelection';
-import UnitProfilePage from './pages/unitProfile';
-import UnitTypesPage from './pages/unitTypes';
+import ArmySelectionProvider from './providers/armySelection';
+import UnitProfileProvider from './providers/unitProfile';
+import UnitTypesProvider from './providers/unitTypes';
 import { Route, Switch, Link } from 'react-router-dom';
 
 class App extends Component {
@@ -21,9 +21,9 @@ class App extends Component {
                     <Link to="/" ><h1>Infinity Tactics</h1></Link>
                     <div className="App-intro">
                         <Switch>
-                            <Route component={ ArmySelectionPage } exact path="/" />
-                            <Route component={ UnitProfilePage } path="/profile" />
-                            <Route component={ UnitTypesPage } path="/units" />
+                            <Route component={ ArmySelectionProvider } exact path="/" />
+                            <Route component={ UnitProfileProvider } path="/profile" />
+                            <Route component={ UnitTypesProvider } path="/units" />
                         </Switch>
                     </div>
                 </div>

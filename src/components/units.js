@@ -18,7 +18,7 @@ class Units extends Component {
         const key = item.id_name;
         const { getArmy } = this.props;
 
-        return <li key={ `${value}-${key}` }><Link to={ `/profile/:${key}` } onClick={ () => {this.handleOnClick(key)} } >{ value }</Link></li>
+        return <li key={ `${value}-${key}` }><Link to={ `/profile?=${key}` } onClick={ () => {this.handleOnClick(key)} } >{ value }</Link></li>
     };
 
     renderArmyTypes () {
