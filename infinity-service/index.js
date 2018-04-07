@@ -28,8 +28,7 @@ app.get('/armydata/:id', (req, res) => {
 
 
 
-app.post('/tactics', (req, res) => {
-    console.log(req.body);
+app.post('/tactics', (req, res) => {;
     res.set('Content-Type', 'application/json');
-    res.send({response:`You sent: to Express`});
+    res.send({response:`You sent: ${req.body.tactic} to Express`});
 });
