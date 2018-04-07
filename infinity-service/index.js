@@ -1,9 +1,11 @@
 const experss = require('express');
 const cors = require('cors');
-const app = experss();
 const MongoClient = require('mongodb').MongoClient;
+const bodyParser = require('body-parser');
+const app = experss();
 
 app.use(cors());
+app.use(bodyParser.json());
 
 let db;
 
@@ -24,7 +26,10 @@ app.get('/armydata/:id', (req, res) => {
     });
 });
 
+
+
 app.post('/tactics', (req, res) => {
     console.log(req.body);
-    res.send({result: 'Result!'});
+    res.set('Content-Type', 'application/json');
+    res.send({response:`You sent: to Express`});
 });

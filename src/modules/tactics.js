@@ -25,22 +25,20 @@ export default(state = INITIAL_STATE, action) => {
                 ...state,
                 status: 'uninitiated',
                 error: undefined,
-                profileTactics: undefined
+                profileTactics: payload
             };
 
         case SUBMIT_TACTIC_SUCCESS:
             return {
                 ...state,
-                status: 'submitted',
-                profileTactics: action.payload.profileTactics
+                status: 'submitted'
             };
 
         case SUBMIT_TACTIC_FAILED:
             return {
                 ...state,
                 status: 'submission failed',
-                error: 'error',
-                profileTactics: undefined
+                error: 'error'
             };
 
         default:
