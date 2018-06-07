@@ -30,4 +30,11 @@ app.post('/tactics', (req, res) => {
     db.collection('tactics').insert(req.body, (err, result) => {
         if (err) return console.log(err)
     })
-})
+});
+
+app.get('/tactics', (req, res) => {
+    db.collection('tactics').find().toArray((err, result) => {
+        if (err) return console.log(err);
+        res.send({result});
+    });
+});

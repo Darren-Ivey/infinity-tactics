@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { map, size } from 'lodash/collection';
 
 class Profile extends Component {
     constructor(props) {
@@ -10,6 +11,7 @@ class Profile extends Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.props.fetchTactics();
     }
 
     handleChange(e) {
@@ -32,15 +34,25 @@ class Profile extends Component {
         )
     }
 
+    renderTactics ({tactic}, id) {
+        return (
+            <li key={ `tactic-${id}` }>{ tactic }</li>
+        )
+    }
+
     renderLoader () {
         return <div>Loading profile...</div>
     }
 
     renderProfile () {
+        const { profileTactics } = this.props;
+        const { selectedProfile } = this.state;
+
         return(
             <div>
-                <p>Selected Profile:{ this.state.selectedProfile }</p>
+                <p>Selected Profile:{ selectedProfile }</p>
                 { this.renderForm() }
+                { size(profileTactics) ? map(profileTactics, (tactic, id) => this.renderTactics(tactic, id)) : null }
             </div>
         )
     }

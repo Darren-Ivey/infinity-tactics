@@ -31,3 +31,11 @@ export const postTactic = ({ tactic }) => {
             code: error
         }))
 };
+
+export const fetchTactics = () => {
+    return fetch('http://localhost:3003/tactics', getOptions)
+        .then(r => r.json())
+        .catch(error => console.log({
+            code: error
+        }))
+};

@@ -1,7 +1,7 @@
 import armySelection, { fetchArmyDataSaga, selectArmy, selectProfile } from './armySelection';
 import appStatus, { APP_UNLOADED, appLoaded } from './appStatus';
 import { SELECT_ARMY } from './armySelection'
-import tactics, { SUBMIT_TACTIC, submitTacticsSaga } from './tactics'
+import tactics, { watchTacticsSaga } from './tactics'
 import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 import { all, fork, take, put, takeLatest } from 'redux-saga/effects';
@@ -36,11 +36,6 @@ function* watchArmySelection() {
     yield takeLatest(SELECT_ARMY, fetchArmyDataSaga);
 }
 
-export function* watchSubmitTacticsSaga () {
-    yield takeLatest(SUBMIT_TACTIC, submitTacticsSaga);
-}
-
-
 export const rootReducer = combineReducers({
     appStatus,
     armySelection,
@@ -53,6 +48,6 @@ export function* rootSaga () {
         fork(checkUrlForProps),
         fork(watchArmySelection),
         fork(watchAppLoading),
-        fork(watchSubmitTacticsSaga)
+        fork(watchTacticsSaga)
     ])
 }
