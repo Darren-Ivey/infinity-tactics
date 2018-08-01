@@ -6,6 +6,7 @@
     "react-scripts": "0.8.4"
   },
   "dependencies": {
+    "auth0-lock": "^11.8.1",
     "history": "^4.7.2",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",

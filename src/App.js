@@ -6,6 +6,7 @@ import ArmySelectionProvider from './providers/armySelection';
 import UnitProfileProvider from './providers/unitProfile';
 import UnitTypesProvider from './providers/unitTypes';
 import { Route, Switch, Link } from 'react-router-dom';
+import Login from './components/login';
 
 class App extends Component {
 
@@ -19,6 +20,7 @@ class App extends Component {
             <div className="App">
                 <div className="App">
                     <Link to="/" ><h1>Infinity Tactics</h1></Link>
+                    <Login />
                     <div className="App-intro">
                         <Switch>
                             <Route component={ ArmySelectionProvider } exact path="/" />
