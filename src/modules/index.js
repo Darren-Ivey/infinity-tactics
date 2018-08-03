@@ -1,6 +1,6 @@
 import armySelection, { fetchArmyDataSaga, selectArmy, selectProfile } from './armySelection';
 import appStatus, { APP_UNLOADED, appLoaded } from './appStatus';
-import authorisation, { watchLogin } from './authorisation';
+import authorisation, { watchLogin, watchLogout } from './authorisation';
 import { SELECT_ARMY } from './armySelection'
 import tactics, { watchTacticsSaga } from './tactics'
 import { combineReducers } from 'redux';
@@ -51,6 +51,7 @@ export function* rootSaga () {
         fork(watchArmySelection),
         fork(watchAppLoading),
         fork(watchTacticsSaga),
-        fork(watchLogin)
+        fork(watchLogin),
+        fork(watchLogout)
     ])
 }
