@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { map, size } from 'lodash/collection';
+import ProfileForm from './profileForm';
 
 class Profile extends Component {
     constructor(props) {
@@ -25,15 +26,6 @@ class Profile extends Component {
         this.props.submitTactics(this.state.tactic);
     }
 
-    renderForm () {
-        return (
-            <form onSubmit={ this.handleSubmit }>
-                <textarea value={ this.state.tactic } onChange={ this.handleChange } type="text" placeholder="tactic" name="tactic" />
-                <button type="submit">Submit</button>
-            </form>
-        )
-    }
-
     renderTactics ({tactic}, id) {
         return (
             <li key={ `tactic-${id}` }>{ tactic }</li>
@@ -51,7 +43,10 @@ class Profile extends Component {
         return(
             <div>
                 <p>Selected Profile:{ selectedProfile }</p>
-                { this.renderForm() }
+                <ProfileForm
+                    handleSubmit={ this.handleSubmit }
+                    handleChange={ this.handleChange }
+                    tactic={ this.state.tactic } />
                 { size(profileTactics) ? map(profileTactics, (tactic, id) => this.renderTactics(tactic, id)) : null }
             </div>
         )

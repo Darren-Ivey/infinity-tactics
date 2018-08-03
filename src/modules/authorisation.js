@@ -12,7 +12,6 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const UNAUTHENTICATED = 'UNAUTHENTICATED';
 export const AUTHENTICATING = 'AUTHENTICATING';
 export const AUTHENTICATED = 'AUTHENTICATED';
-export const REMOVE_AUTHENTICATION = 'REMOVE_AUTHENTICATION';
 export const LOCK_HIDDEN = 'LOCK_HIDDEN';
 export const LOCK_DISPLAYED = 'LOCK_DISPLAYED';
 
@@ -61,7 +60,7 @@ export default (state = INITIAL_STATE, action) => {
         case LOGOUT:
             return {
                 ...state,
-                status: REMOVE_AUTHENTICATION,
+                status: UNAUTHENTICATED,
                 lockStatus: LOCK_HIDDEN
             };
 
@@ -82,7 +81,7 @@ export const getLockStatus = (state) => state.authorisation.lockStatus;
 export const getIdToken = (state) => state.authorisation.idToken;
 export const getAccessToken = (state) => state.authorisation.accessToken;
 export const getAuthExpire = (state) => state.authorisation.expiresIn;
-
+export const isAuthorised = (state) => (state.authorisation.status === AUTHENTICATED);
 
 //Sagas
 export function* watchLogin() {
