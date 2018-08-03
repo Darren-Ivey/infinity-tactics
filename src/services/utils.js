@@ -21,7 +21,3 @@ export const catchError = (response) => {
     }
     return response;
 };
-
-export const getToken = () => {
-    return localStorage.getItem('access_token');
-};

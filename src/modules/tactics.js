@@ -1,6 +1,7 @@
 import { createAction } from 'redux-actions';
 import { postTactic, fetchTactics } from '../services/infinity-services';
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLatest, select } from 'redux-saga/effects';
+import { getAccessToken } from './authorisation';
 
 // actions
 export const SUBMIT_TACTIC = 'SUBMIT_TACTIC';
@@ -85,9 +86,10 @@ export const profileTactics = (state) => state.tactics.profileTactics;
 // sagas
 export function* submitTacticsSaga ({ payload }) {
 
-    try {
-        const response = yield call(postTactic, { tactic: payload });
+    const accessToken = yield select(getAccessToken);
 
+    try {
+        const response = yield call(postTactic, { tactic: payload }, accessToken);
         yield put(submitTacticsSuccess(response));
     } catch (error) {
         yield put(submitTacticsFailed(error));

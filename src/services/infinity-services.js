@@ -1,4 +1,4 @@
-import { catchError, getToken } from './utils';
+import { catchError } from './utils';
 
 const getOptions = {
     method: 'GET',
@@ -7,14 +7,16 @@ const getOptions = {
     }
 };
 
-const postOptions = {
-    method: 'post',
-    body: JSON.stringify({ tactic }),
-    headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${getToken()}`
+const postOptions = (body, key, token) => (
+    {
+        method: 'post',
+        body: JSON.stringify({ [key]: body }),
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
     }
-};
+);
 
 export const getArmyData = (armyType) => {
     return fetch(`http://localhost:3003/armydata/${armyType}`, getOptions)
@@ -28,8 +30,8 @@ export const fetchTactics = () => {
         .then(r => r.json())
 };
 
-export const postTactic = ({ tactic }) => {
-    return fetch(`http://localhost:3003/tactics`, postOptions)
+export const postTactic = ({ tactic }, accessToken) => {
+    return fetch(`http://localhost:3003/tactics`, postOptions(tactic, 'tactic', accessToken))
         .then(res => catchError(res))
         .then(r => r.json())
 };
