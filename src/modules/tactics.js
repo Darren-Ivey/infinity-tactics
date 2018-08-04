@@ -37,7 +37,8 @@ export default(state = INITIAL_STATE, action) => {
         case SUBMIT_TACTIC_SUCCESS:
             return {
                 ...state,
-                submitStatus: 'submitted'
+                submitStatus: 'submitted',
+                profileTactics: [ payload, ...state.profileTactics ],
             };
 
         case SUBMIT_TACTIC_FAILED:
@@ -85,28 +86,24 @@ export const profileTactics = (state) => state.tactics.profileTactics;
 
 // sagas
 export function* submitTacticsSaga ({ payload }) {
-
     const accessToken = yield select(getAccessToken);
-
     try {
         const response = yield call(postTactic, { tactic: payload }, accessToken);
         yield put(submitTacticsSuccess(response));
     } catch (error) {
+        console.log(error)
         yield put(submitTacticsFailed(error));
     }
 }
 
 export function* getTacticsSaga () {
-
     try {
         const response = yield call(fetchTactics);
-
         yield put(getTacticsSuccess(response));
     } catch (error) {
         yield put(getTacticsFailed(error));
     }
 }
-
 
 // watchers
 export function* watchTacticsSaga () {

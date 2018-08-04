@@ -56,7 +56,11 @@ app.post('/tactics', jwtCheck, (req, res) => {
         if (err) {
             return console.log(err)
         } else {
-            return res.status(200).send();
+            const tactic = {
+                tactic: result.ops[0].tactic,
+                id: result.ops[0]._id
+            };
+            return res.status(200).send(tactic);
         }
     })
 });
