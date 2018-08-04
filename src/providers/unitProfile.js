@@ -29,7 +29,8 @@ const mapDispatchToProps = (dispatch) => {
     return {
         selectProfile: (data) => dispatch(selectProfile(data)),
         submitTactics: (data) => dispatch(submitTactics(data)),
-        fetchTactics: () => dispatch(getTactics())
+        fetchTactics: () => dispatch(getTactics()),
+
     };
 };
 

@@ -1,5 +1,6 @@
 import armySelection, { fetchArmyDataSaga, selectArmy, selectProfile } from './armySelection';
 import appStatus, { APP_UNLOADED, appLoaded } from './appStatus';
+import authorisation, { watchLogin, watchLogout } from './authorisation';
 import { SELECT_ARMY } from './armySelection'
 import tactics, { watchTacticsSaga } from './tactics'
 import { combineReducers } from 'redux';
@@ -40,6 +41,7 @@ export const rootReducer = combineReducers({
     appStatus,
     armySelection,
     tactics,
+    authorisation,
     router: routerReducer
 });
 
@@ -48,6 +50,8 @@ export function* rootSaga () {
         fork(checkUrlForProps),
         fork(watchArmySelection),
         fork(watchAppLoading),
-        fork(watchTacticsSaga)
+        fork(watchTacticsSaga),
+        fork(watchLogin),
+        fork(watchLogout)
     ])
 }
