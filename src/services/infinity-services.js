@@ -19,19 +19,19 @@ const postOptions = (body, key, token) => (
 );
 
 export const getArmyData = (armyType) => {
-    return fetch(`http://localhost:3003/armydata/${armyType}`, getOptions)
+    return fetch(`/armydata/${armyType}`, getOptions)
         .then(res => catchError(res))
         .then(r => r.json())
 };
 
 export const fetchTactics = () => {
-    return fetch('http://localhost:3003/tactics', getOptions)
+    return fetch('/tactics', getOptions)
         .then(res => catchError(res))
         .then(r => r.json())
 };
 
 export const postTactic = ({ tactic }, accessToken) => {
-    return fetch(`http://localhost:3003/tactics`, postOptions(tactic, 'tactic', accessToken))
+    return fetch(`/tactics`, postOptions(tactic, 'tactic', accessToken))
         .then(res => catchError(res))
         .then(r => r.json())
 };
